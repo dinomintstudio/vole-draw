@@ -20,6 +20,7 @@
   "scripts": {
 	  "build:dev": "tsc",
 	  "build:prod": "tsc -p tsconfig.prod.json && cp package.json dist",
+	  "watch": "tsc -w",
 	  "clean": "rm -r dist",
 	  "test": "jest --watchAll",
 	  "ci": "jest --ci"
