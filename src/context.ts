@@ -1,8 +1,9 @@
 import { Color, Vector, vec } from "@vole-engine/core"
 
 export interface DrawOptions {
-    fill: Color | string | CanvasGradient | CanvasPattern
-    stroke: Color | string | CanvasGradient | CanvasPattern
+    fill?: Color | string | CanvasGradient | CanvasPattern
+    stroke?: Color | string | CanvasGradient | CanvasPattern
+    lineWidth?: number
 }
 
 export class Context {
@@ -50,6 +51,7 @@ export class Context {
         }
         if (opts?.stroke) {
             this.ctx.strokeStyle = opts.stroke ? narrowColor(opts.stroke) : '#000'
+            this.ctx.lineWidth = opts.lineWidth ?? 1
             if (path) {
                 this.ctx.stroke(path)
             } else {
@@ -68,6 +70,14 @@ export class Context {
             const topLeft = center.sub(imgSize.scale(0.5))
             this.ctx.drawImage(image, topLeft.x, topLeft.y)
         }
+        return this
+    }
+
+    line(start: Vector, end: Vector, opts?: DrawOptions): Context {
+        const path = new Path2D()
+        path.moveTo(start.x, start.y)
+        path.lineTo(end.x, end.y)
+        this.endPath(opts, path)
         return this
     }
 
