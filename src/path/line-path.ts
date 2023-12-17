@@ -14,7 +14,7 @@ export class LinePath {
         const start = this.points[0]
         path.moveTo(start.x, start.y)
         for (const p of this.points.slice(1)) {
-            path.moveTo(p.x, p.y)
+            path.lineTo(p.x, p.y)
         }
         return path
     }
