@@ -1,4 +1,5 @@
-import { Color, Vector, vec } from "@vole-engine/core"
+import { Color } from "@vole-engine/core/color"
+import { Vector, vec } from "@vole-engine/core/vector"
 
 export interface DrawOptions {
     fill?: Color | string | CanvasGradient | CanvasPattern

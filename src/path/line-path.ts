@@ -1,4 +1,4 @@
-import { Vector } from "@vole-engine/core";
+import { Vector } from "@vole-engine/core/vector";
 
 export class LinePath {
 
